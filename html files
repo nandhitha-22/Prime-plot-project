@@ -2448,3 +2448,260 @@
 </body>
 
 </html>
+
+//qrcode.html//
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Scan & Pay</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        img {
+            width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Scan to Pay</h2>
+    <p>Please scan the QR code below and make the payment.</p>
+    <img src="images/qr.jpeg" alt="QR Code to Pay">
+    <br><br>
+    <a href="thank.html">I've Paid – Continue</a>
+
+</body>
+
+</html>
+
+//sign.html//
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>User Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="container mt-5">
+    <h2>User Signup</h2>
+    <form id="signupForm">
+        <div class="mb-3">
+            <label for="newUsername" class="form-label">Username</label>
+            <input type="text" id="newUsername" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="newPassword" class="form-label">Password</label>
+            <input type="password" id="newPassword" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" id="confirmPassword" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-success">Register</button>
+        <p class="mt-3">Already have an account? <a href="login.html">Login here</a></p>
+    </form>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById("newUsername").value.trim();
+            const password = document.getElementById("newPassword").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                alert("❌ Passwords do not match.");
+                return;
+            }
+
+            let users = JSON.parse(localStorage.getItem("users") || "[]");
+
+            if (users.some(u => u.username === username)) {
+                alert("❌ Username already exists.");
+                return;
+            }
+
+            users.push({ username, password });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("✅ Signup successful! Please login.");
+            window.location.href = "login.html";
+        });
+    </script>
+</body>
+
+</html>
+
+//thankyou.html//
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .thank-you-box {
+            background: #ffffff;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            animation: fadeInBounce 1.2s ease-out;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .thank-you-box i {
+            color: #4BB543;
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .thank-you-box h1 {
+            font-size: 32px;
+            color: #333333;
+            margin-bottom: 10px;
+        }
+
+        .thank-you-box p {
+            color: #666666;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-box a {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #4BB543;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .thank-you-box a:hover {
+            background: #3aa034;
+        }
+
+        @keyframes fadeInBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.8) translateY(30px);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-10px);
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Confetti Styles */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            top: -10px;
+            animation: confetti-fall linear forwards;
+            opacity: 0.8;
+            z-index: 999;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Thank you card -->
+    <div class="thank-you-box">
+        <i class="fa-solid fa-circle-check"></i>
+        <h1>Thank You!</h1>
+        <p>Your message has been successfully sent. We will contact you very soon!</p>
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <!-- Confetti Script -->
+    <script>
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+            document.body.appendChild(confetti);
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000);
+        }
+
+        // Generate multiple confetti
+        for (let i = 0; i < 80; i++) {
+            setTimeout(createConfetti, i * 100);
+        }
+    </script>
+
+</body>
+
+</html>
+
+//thanks.html//
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif; padding:50px;">
+    <h2>✅ Payment Successful!</h2>
+    <p>Your booking is confirmed. We will contact you shortly.</p>
+    <a href="plots.html">Back to Plot List</a>
+
+    <script>
+        // Mark the latest booking as "Paid"
+        const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+        if (bookings.length > 0) {
+            bookings[bookings.length - 1].paymentStatus = "Paid";
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+        }
+    </script>
+</body>
+
+</html>
+
