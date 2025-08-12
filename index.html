@@ -1,0 +1,2450 @@
+//index.html//
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimePlots - Buy Land Plots Online</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add this in your <head> if not already included -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2e86de;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2e86de;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2e86de;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1e6fd9;
+        }
+
+        /* Dashboard Links */
+        .dashboard-links {
+            display: flex;
+            gap: 15px;
+            margin-left: 30px;
+        }
+
+        .dashboard-links a {
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .dashboard-links .admin-btn {
+            background-color: #f72585;
+        }
+
+        .dashboard-links .admin-btn:hover {
+            background-color: #d3166d;
+        }
+
+        .dashboard-links .user-btn {
+            background-color: #4cc9f0;
+        }
+
+        .dashboard-links .user-btn:hover {
+            background-color: #2fb4e0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Search Section */
+        .search-section {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-section h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .search-form input,
+        .search-form select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-form button {
+            background-color: #2e86de;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .search-form button:hover {
+            background-color: #1e6fd9;
+        }
+
+        /* Featured Plots */
+        .featured-plots {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .plots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .plot-card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .plot-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .plot-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .plot-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .plot-card:hover .plot-img img {
+            transform: scale(1.1);
+        }
+
+        .plot-info {
+            padding: 20px;
+        }
+
+        .plot-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .plot-info p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .plot-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2e86de;
+            margin-bottom: 15px;
+        }
+
+        .plot-features {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .plot-features span {
+            display: flex;
+            align-items: center;
+            color: #666;
+        }
+
+        .plot-features i {
+            margin-right: 5px;
+            color: #2e86de;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .why-choose-item {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .why-choose-item i {
+            font-size: 36px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .why-choose-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+        }
+
+        .contact-info ul {
+            list-style: none;
+        }
+
+        .contact-info ul li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info ul li i {
+            margin-right: 10px;
+            color: #2e86de;
+            font-size: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background-color: #2e86de;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #1e6fd9;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background-color: #f1f5f9;
+        }
+
+        .faq-item {
+            background-color: #fff;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 2px;
+            background-color: #2e86de;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #2e86de;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #2e86de;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .dashboard-links {
+                margin-left: 0;
+                margin-top: 15px;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .search-form {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .newsletter-form input[type="email"] {
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+            width: 300px;
+            max-width: 90%;
+            outline: none;
+        }
+
+        .newsletter-form .btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Floating Button */
+        .emi-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 26px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* EMI Popup */
+        .emi-popup {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            z-index: 9998;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .emi-popup input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .emi-popup button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .emi-result {
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .emi-result p {
+            margin: 5px 0;
+        }
+
+        @media(max-width: 500px) {
+            .emi-popup {
+                width: 90%;
+                left: 5%;
+                bottom: 90px;
+            }
+        }
+
+        .top-marquee {
+            background-color: #87ceeb;
+            /* Sky Blue */
+            color: #003366;
+            font-weight: bold;
+            padding: 10px 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 16px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            margin-top: 50px;
+            /* prevent content overlap */
+        }
+
+        marquee strong {
+            color: #002244;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PrimePlots</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="plots.html">Plots</a></li>
+                    <li><a href="#why-choose-us">Why PrimePlots</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+                <div class="dashboard-links">
+                    <a href="admin.html" class="btn admin-btn"><i class="fas fa-user-shield"></i> Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Your Perfect Plot of Land</h1>
+                <p>Discover premium residential and commercial plots in prime locations at unbeatable prices.</p>
+                <a href="#contact-section" class="btn">Buy Plots</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Plots -->
+    <section class="featured-plots" id="featured-plots">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Plots</h2>
+                <p>Explore our premium selection of land plots in Tamil Nadu</p>
+            </div>
+            <div class="plots-grid">
+                <!-- Plot 1 -->
+                <div class="plot-card">
+                    <div class="plot-img">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                            alt="Plot 1">
+                    </div>
+                    <div class="plot-info">
+                        <h3>Ooty Residential Plot</h3>
+                        <p>Ooty, Nilgiris District</p>
+                        <div class="plot-features">
+                            <span><i class="fas fa-ruler-combined"></i> 2 Acres</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Hill View</span>
+                        </div>
+                        <div class="plot-price">₹35 Lakhs</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Plot 2 -->
+                <div class="plot-card">
+                    <div class="plot-img">
+                        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                            alt="Plot 2">
+                    </div>
+                    <div class="plot-info">
+                        <h3>Vellore Industrial Plot</h3>
+                        <p>Vellore, Tamil Nadu</p>
+                        <div class="plot-features">
+                            <span><i class="fas fa-ruler-combined"></i> 5 Acres</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Near SIDCO Industrial Area</span>
+                        </div>
+                        <div class="plot-price">₹60 Lakhs</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Plot 3 -->
+                <div class="plot-card">
+                    <div class="plot-img">
+                        <img src="https://images.unsplash.com/photo-1605146769289-440113cc3d00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                            alt="Plot 3">
+                    </div>
+                    <div class="plot-info">
+                        <h3>Commercial Plot in Anna Nagar</h3>
+                        <p>Anna Nagar, Chennai</p>
+                        <div class="plot-features">
+                            <span><i class="fas fa-ruler-combined"></i> 1 Acre</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Main Road Access</span>
+                        </div>
+                        <div class="plot-price">₹1.4 Crores</div>
+                        <a href="#" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us-section" id="why-choose-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose PrimePlots?</h2>
+                <p>Your trusted partner in land investment across Tamil Nadu</p>
+            </div>
+            <div class="why-choose-grid">
+                <div class="why-choose-item">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Verified Properties</h3>
+                    <p>All plots are legally verified with proper documentation and clear titles.</p>
+                </div>
+                <div class="why-choose-item">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Prime Locations</h3>
+                    <p>Our plots are located in fast-growing and well-connected areas in Tamil Nadu.</p>
+                </div>
+                <div class="why-choose-item">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Transparent Process</h3>
+                    <p>No hidden charges. Clear pricing and guidance throughout the purchase process.</p>
+                </div>
+                <div class="why-choose-item">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>Trusted Support</h3>
+                    <p>Our expert team supports you before, during, and after your purchase.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br><br>
+    <!-- About Us Section -->
+    <section class="about-us-section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Learn more about who we are and what we do</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <strong>PrimePlots</strong> is a trusted name in real estate, helping individuals and investors
+                        find
+                        their dream land across Tamil Nadu.
+                        With years of experience and a strong local presence, we specialize in offering residential,
+                        commercial, and industrial plots
+                        in fast-growing and strategic locations.
+                    </p>
+                    <p>
+                        Our mission is to make land ownership easy, transparent, and secure. From legal verification and
+                        site visits
+                        to paperwork and post-sale support — we handle it all with professionalism and care.
+                    </p>
+                    <p>
+                        Whether you're buying your first plot or expanding your investments, PrimePlots is committed to
+                        delivering
+                        genuine properties, reliable service, and complete peace of mind.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="images/land.webp" alt="About PrimePlots" style="width: 400px;">
+                </div>
+            </div>
+        </div>
+    </section>
+    <script type="text/javascript">
+        // Initialize EmailJS when the DOM is fully loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            emailjs.init('lzv-OeDSd_TNeqJbM');
+            // Get the contact form element
+            const contactForm = document.querySelector(".contact-form form");
+
+            if (contactForm) {
+                contactForm.addEventListener("submit", function (event) {
+                    event.preventDefault(); // Prevent default form submission
+
+                    // Collect form data
+                    const formData = {
+                        name: contactForm.name.value,
+                        email: contactForm.email.value,
+                        phone: contactForm.phone.value,
+                        message: contactForm.message.value
+                    };
+
+                    console.log('Sending with data:', formData);
+
+                    // Send the email using EmailJS
+                    emailjs.send('service_o3oz62m', 'template_1zimza8', formData)
+                        .then(function (response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                            alert('Your message has been sent successfully!');
+                            contactForm.reset(); // Reset the form
+                        }, function (error) {
+                            console.error('FAILED...', error);
+                            alert('Sorry, there was an error sending your message. Please try again.');
+                        });
+                });
+            }
+        });
+    </script>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch for more information</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Talk About Land</h3>
+                    <p>Have questions about our plots or ready to make a purchase? Contact us today!</p>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +91 63810 38391</li>
+                        <li><i class="fas fa-envelope"></i> info@primeplots.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Plot Street, Land City, Ambur</li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="phone" placeholder="Your Phone">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                        <button type="submit">Send Message</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about buying plots</p>
+            </div>
+            <div class="faq-container">
+                <!-- FAQ 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I purchase a plot?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can purchase a plot by contacting us directly through our website or by phone. Our team
+                            will guide you through the entire process, including paperwork and payment options.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment options are available?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept various payment methods including bank transfers, cashier's checks, and financing
+                            options through our partner lenders.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I visit the plots before purchasing?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we encourage site visits. Contact us to schedule a viewing with one of our
+                            representatives.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are there any hidden fees?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No, we believe in transparent pricing. All costs including taxes and documentation fees will
+                            be clearly communicated upfront.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/916381038391" target="_blank" style="
+           position: fixed;
+           bottom: 80px;
+           right: 15px;
+           z-index: 1000;
+           background-color: #25D366;
+           color: white;
+           border-radius: 50%;
+           width: 55px;
+           height: 55px;
+           text-align: center;
+           font-size: 28px;
+           line-height: 55px;
+           box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+           text-decoration: none;
+           animation: bounce 2s infinite;">
+        <i class="fa fa-whatsapp"></i>
+    </a>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="container" style="text-align: center;">
+            <div class="section-title">
+                <h2>Subscribe to Our Newsletter</h2>
+                <p>Stay updated with the latest plots, offers, and news from PrimePlots</p>
+            </div>
+
+            <form id="newsletterForm"
+                style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <input type="email" id="emailInput" name="email" placeholder="Enter your email" required
+                    style="padding: 10px 15px; border: 1px solid #ccc; border-radius: 20px; width: 280px;" />
+                <button type="submit" class="btn"
+                    style="padding: 10px 25px; border: none; background-color: #007bff; color: white; border-radius: 20px; cursor: pointer;">
+                    Subscribe
+                </button>
+            </form>
+            <p id="error-msg" style="color: red; margin-top: 10px;"></p>
+        </div>
+    </section>
+
+    <!-- Email Validation Script -->
+    <script>
+        document.getElementById("newsletterForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const emailInput = document.getElementById("emailInput").value;
+            const errorMsg = document.getElementById("error-msg");
+
+            const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+            if (emailRegex.test(emailInput)) {
+                window.location.href = "thank-you.html";
+            } else {
+                errorMsg.textContent = "Please enter a valid email address.";
+            }
+        });
+    </script>
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>PrimePlots</h3>
+                    <p>Your trusted partner in land acquisition. We help you find the perfect plot for your dreams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="plots.html">Plots</a></li>
+                        <li><a href="#why-choose-us">Why PrimePlots</a></li>
+                        <li><a href="#contact-section">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Plot Types</h3>
+                    <ul>
+                        <li><a href="#">Residential Plots</a></li>
+                        <li><a href="#">Commercial Plots</a></li>
+                        <li><a href="#">Agricultural Land</a></li>
+                        <li><a href="#">Industrial Plots</a></li>
+                        <li><a href="#">Waterfront Properties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Plot Street, Land City, Ambur</li>
+                        <li><i class="fas fa-phone"></i>+91 63810 38391</li>
+                        <li><i class="fas fa-envelope"></i> info@primeplots.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 PrimePlots. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+
+                const icon = question.querySelector('i');
+                if (faqItem.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Connect with admin and user dashboards
+        document.addEventListener('DOMContentLoaded', function () {
+            // Check if there are plots data in localStorage
+            if (localStorage.getItem('plots')) {
+                const plots = JSON.parse(localStorage.getItem('plots'));
+                // Update featured plots section if needed
+            }
+        });
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+    </script>
+
+    <script> window.chtlConfig = { chatbotId: "4988455987" } </script>
+    <script async data-id="4988455987" id="chtl-script" type="text/javascript"
+        src="https://chatling.ai/js/embed.js"></script>
+
+    <!-- Offer Popup Modal -->
+    <div class="popup-overlay" id="offerPopup">
+        <div class="popup-box">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <h3>🎁 Free Layout Plan on WhatsApp</h3>
+            <p>💸 ₹10,000 Discount for Bookings This Week!</p>
+            <a href="https://wa.me/916381038391?text=Hi! I’m interested in the free layout plan and discount offer!"
+                target="_blank" class="popup-whatsapp-btn">
+                📲 Claim Offer on WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <style>
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+        }
+
+        .popup-box {
+            background-color: #e0f7ff;
+            /* light sky blue */
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            max-width: 90%;
+            width: 360px;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 0.6s ease;
+            font-family: Arial, sans-serif;
+        }
+
+        .popup-box h3 {
+            color: #0077b6;
+            margin-bottom: 10px;
+        }
+
+        .popup-box p {
+            color: #003366;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .popup-whatsapp-btn {
+            display: inline-block;
+            background-color: #25d366;
+            color: #fff;
+            padding: 12px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 22px;
+            color: #000;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+
+    <script>
+        // Show popup automatically after 1.5 seconds
+        window.addEventListener("load", function () {
+            setTimeout(() => {
+                document.getElementById("offerPopup").style.display = "flex";
+            }, 1500);
+        });
+
+        function closePopup() {
+            document.getElementById("offerPopup").style.display = "none";
+        }
+    </script>
+    <!-- Sky Blue Scrolling Offer Banner -->
+    <div class="top-marquee">
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            🎁 <strong>Get Free Layout Plan on WhatsApp!</strong> 📲 | 💸 <strong>₹10,000 Discount for Bookings This
+                Week!</strong> Hurry up!
+        </marquee>
+    </div>
+
+    <div class="emi-popup" id="emiCalculator">
+        <h4>EMI Calculator</h4>
+        <input type="number" id="principal" placeholder="Loan Amount (₹)" />
+        <input type="number" id="rate" placeholder="Interest Rate (%)" />
+        <input type="number" id="months" placeholder="Tenure (Months)" />
+        <button onclick="calculateEMI()">Calculate EMI</button>
+        <div class="emi-result" id="emiResult"></div>
+    </div>
+
+    <script>
+        function toggleEMI() {
+            const popup = document.getElementById("emiCalculator");
+            popup.style.display = popup.style.display === "flex" ? "none" : "flex";
+        }
+
+        function calculateEMI() {
+            const principalInput = document.getElementById("principal").value.trim();
+            const rateInput = document.getElementById("rate").value.trim();
+            const monthsInput = document.getElementById("months").value.trim();
+            const resultBox = document.getElementById("emiResult");
+
+            const P = parseFloat(principalInput);
+            const annualRate = parseFloat(rateInput);
+            const N = parseInt(monthsInput);
+
+            // Validate input
+            if (isNaN(P) || isNaN(annualRate) || isNaN(N) || P <= 0 || annualRate <= 0 || N <= 0) {
+                resultBox.innerHTML = `<p style="color: red;">❗ Please enter valid positive numbers in all fields.</p>`;
+                return;
+            }
+
+            const R = annualRate / 12 / 100;
+
+            const EMI = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+            const totalPayment = EMI * N;
+            const totalInterest = totalPayment - P;
+
+            resultBox.innerHTML = `
+          <p>📅 Monthly EMI: ₹${EMI.toFixed(2)}</p>
+          <p>💸 Total Interest: ₹${totalInterest.toFixed(2)}</p>
+          <p>💰 Total Payment: ₹${totalPayment.toFixed(2)}</p>
+        `;
+        }
+    </script>
+</body>
+
+</html>
+
+//login.html//
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>User Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body class="container mt-5">
+    <h2>User Login</h2>
+    <form id="loginForm">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" id="username" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Log In</button>
+        <p class="mt-3">Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </form>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+
+            let users = JSON.parse(localStorage.getItem("users") || "[]");
+            const matched = users.find(u => u.username === username && u.password === password);
+
+            if (matched) {
+                // ✅ Store login history including password
+                const loginHistory = JSON.parse(localStorage.getItem("loginHistory") || "[]");
+                loginHistory.push({
+                    username,
+                    password,
+                    time: new Date().toLocaleString()
+                });
+                localStorage.setItem("loginHistory", JSON.stringify(loginHistory));
+
+                alert("✅ Login successful!");
+                window.location.href = "index.html";
+            } else {
+                alert("❌ Invalid username or password.");
+            }
+        });
+
+    </script>
+</body>
+
+</html>
+
+///plots-details///
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Plot Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .plot-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .plot-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .price {
+            color: #007bff;
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .icon-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2e86de;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2e86de;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2e86de;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1e6fd9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 2px;
+            background-color: #2e86de;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #2e86de;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #2e86de;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PrimePlots</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="plots.html">Plots</a></li>
+                    <li><a href="#why-choose-us">Why PrimePlots</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+                <div class="dashboard-links">
+                    <a href="admin.html" class="btn admin-btn"><i class="fas fa-user-shield"></i> Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container py-5 plot-container">
+        <div id="details"></div>
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card border-0 shadow rounded-4 p-4 bg-light">
+                        <div class="card-body text-center">
+                            <h5 class="card-title fw-bold text-primary mb-3">📍 Schedule a Site Visit</h5>
+                            <p class="card-text fs-6 text-muted">
+                                Interested in this plot? Contact our admin for more information, pricing, and site visit
+                                booking.
+                            </p>
+                            <div class="my-3">
+                                <a href="tel:+916381038391" class="btn btn-primary btn-lg w-100 rounded-pill">
+                                    📞 Call Now: +91 63810 38391
+                                </a>
+                            </div>
+                            <div class="text-muted small mb-4">
+                                🕐 Available: 9:00 AM – 6:00 PM (Mon–Sat)<br>
+                                🚀 Quick responses assured during working hours.
+                            </div>
+                            <hr class="my-4">
+                            <h6 class="fw-bold text-dark">📄 Required Documents for Plot Purchase</h6>
+                            <ul class="list-group list-group-flush text-start mt-3">
+                                <li class="list-group-item bg-light">✔️ Sale Deed / Title Deed</li>
+                                <li class="list-group-item bg-light">✔️ Patta & Chitta</li>
+                                <li class="list-group-item bg-light">✔️ Encumbrance Certificate (EC)</li>
+                                <li class="list-group-item bg-light">✔️ FMB Sketch & A-Register</li>
+                                <li class="list-group-item bg-light">✔️ DTCP / CMDA Approval Copy</li>
+                                <li class="list-group-item bg-light">✔️ Latest Property Tax Receipt</li>
+                            </ul>
+                            <div class="text-muted small mt-3">
+                                📌 Ensure these documents are verified before purchase.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="plots.html" class="btn btn-secondary mt-4">← Back to Listings</a>
+    </div>
+
+    <script>
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        function loadPlotDetails() {
+            const id = getQueryParam('id');
+            const plots = JSON.parse(localStorage.getItem('galleryImages')) || [];
+            const plot = plots[id];
+
+            if (!plot) {
+                document.getElementById('details').innerHTML = '<p class="text-danger">Plot not found.</p>';
+                return;
+            }
+
+            let detailHTML = `
+            <img src="${plot.image}" class="plot-img mb-4" alt="Plot Image">
+                <h1 id="plotName" class="title">${plot.title || `${plot.plotName}`}</h1>
+                <div class="icon-text"><i class="bi bi-geo-alt-fill"></i> ${plot.location}</div>
+                <div class="icon-text"><i class="bi bi-rulers"></i> ${plot.size}</div>
+                <p class="price mt-3">${plot.price}</p>
+                <p class="mt-4">This plot is located in a prime area with excellent access and visibility.</p>
+                `;
+
+            if (plot.ecDocument) {
+                detailHTML += `
+        <a href="${plot.ecDocument}" target="_blank" class="btn btn-outline-secondary mt-3">
+          📄 View EC Document (${plot.ecFileName || 'Open'})
+        </a>
+      `;
+            }
+
+            document.getElementById('details').innerHTML = detailHTML;
+        }
+
+        window.onload = loadPlotDetails;
+    </script>
+    <div style="
+        max-width: 500px;
+        margin: auto;
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      ">
+
+        <h3 style="text-align: center; color: #0056b3;">Book This Plot</h3>
+
+        <input type="text" id="name" placeholder="Your Name" required
+            style="display: block; width: 100%; padding: 10px; font-size: 15px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+        <input type="email" id="email" placeholder="Your Email" required
+            style="display: block; width: 100%; padding: 10px; font-size: 15px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+        <input type="text" id="phone" placeholder="Your Phone" required
+            style="display: block; width: 100%; padding: 10px; font-size: 15px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+        <input type="number" id="price" placeholder="Enter Price ₹" required
+            style="display: block; width: 100%; padding: 10px; font-size: 15px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;" />
+
+        <button onclick="submitBooking()"
+            style="display: block; width: 100%; padding: 10px; font-size: 15px; margin-bottom: 15px; border-radius: 5px; border: none; background-color: #007bff; color: white; cursor: pointer;">
+            Book Now
+        </button>
+
+    </div>
+
+    <script>
+        function submitBooking() {
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const price = document.getElementById("price").value.trim();
+            const plotName = document.getElementById("plotName").innerText;
+
+            if (!name || !email || !phone || !price) {
+                alert("Please fill all the details.");
+                return;
+            }
+
+            const booking = {
+                name,
+                email,
+                phone,
+                price,
+                plotName,
+                paymentStatus: "Paid",
+                bookingId: "BK" + Date.now(),
+                date: new Date().toLocaleString()
+            };
+
+            const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+            bookings.push(booking);
+            localStorage.setItem("bookings", JSON.stringify(bookings));
+
+            window.location.href = "qr-code.html";
+        }
+    </script>
+
+
+    </script>
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/916381038391" target="_blank" style="
+       position: fixed;
+       bottom: 80px;
+       right: 15px;
+       z-index: 1000;
+       background-color: #25D366;
+       color: white;
+       border-radius: 50%;
+       width: 55px;
+       height: 55px;
+       text-align: center;
+       font-size: 28px;
+       line-height: 55px;
+       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+       text-decoration: none;
+       animation: bounce 2s infinite;">
+        <i class="fa fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>PrimePlots</h3>
+                    <p>Your trusted partner in land acquisition. We help you find the perfect plot for your dreams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#hero">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="plots.html">Plots</a></li>
+                        <li><a href="index.html#why-choose-us">Why PrimePlots</a></li>
+                        <li><a href="index.html#contact-section">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Plot Types</h3>
+                    <ul>
+                        <li><a href="#">Residential Plots</a></li>
+                        <li><a href="#">Commercial Plots</a></li>
+                        <li><a href="#">Agricultural Land</a></li>
+                        <li><a href="#">Industrial Plots</a></li>
+                        <li><a href="#">Waterfront Properties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Plot Street, Land City, Ambur</li>
+                        <li><i class="fas fa-phone"></i>+91 63810 38391</li>
+                        <li><i class="fas fa-envelope"></i> info@primeplots.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 PrimePlots. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
+
+//plots.html//
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Available Plots</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .plot-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .plot-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .location,
+        .size {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            border-radius: 8px;
+            padding: 6px 16px;
+            font-size: 0.9rem;
+        }
+
+        .icon-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2e86de;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #2e86de;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #2e86de;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #1e6fd9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 2px;
+            background-color: #2e86de;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: #2e86de;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: #fff;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #2e86de;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+            padding: 0;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #0056b3;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Floating Button */
+        .emi-toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 26px;
+            cursor: pointer;
+            z-index: 9999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* EMI Popup */
+        .emi-popup {
+            position: fixed;
+            bottom: 100px;
+            left: 20px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            z-index: 9998;
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .emi-popup input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .emi-popup button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .emi-result {
+            font-weight: bold;
+            color: #333;
+            margin-top: 10px;
+        }
+
+        .emi-result p {
+            margin: 5px 0;
+        }
+
+        @media(max-width: 500px) {
+            .emi-popup {
+                width: 90%;
+                left: 5%;
+                bottom: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">PrimePlots</div>
+                <ul class="nav-links">
+                    <li><a href="index.html#hme">Home</a></li>
+                    <li><a href="plots.html" class="active">Plots</a></li>
+                    <li><a href="index.html#why-choose-us">Why PrimePlots</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact-section">Contact</a></li>
+                </ul>
+                <div class="dashboard-links">
+                    <a href="admin.html" class="btn admin-btn"><i class="fas fa-user-shield"></i> Admin</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container py-5">
+        <h2 class="mb-4 fw-bold">Featured Plots</h2>
+
+        <div id="plotContainer" class="row g-4"></div>
+    </div>
+
+    <script>
+        function loadPlots() {
+            const container = document.getElementById("plotContainer");
+            const storedPlots = JSON.parse(localStorage.getItem("galleryImages")) || [];
+
+            storedPlots.forEach((plot) => {
+                const col = document.createElement("div");
+                col.className = "col-md-4";
+
+                const card = document.createElement("div");
+                card.className = "card plot-card";
+
+                const img = document.createElement("img");
+                img.src = plot.image;
+                img.className = "card-img-top";
+                img.alt = "Plot Image";
+
+                const body = document.createElement("div");
+                body.className = "card-body";
+
+                const title = document.createElement("h5");
+                title.className = "card-title";
+                title.textContent = plot.title || `Plot Name: ${plot.plotName}`;
+
+                const location = document.createElement("p");
+                location.className = "location icon-text";
+                location.innerHTML = `<i class="bi bi-geo-alt-fill"></i> ${plot.location}`;
+
+                const size = document.createElement("p");
+                size.className = "size icon-text";
+                size.innerHTML = `<i class="bi bi-rulers"></i> ${plot.size}`;
+
+                const price = document.createElement("p");
+                price.className = "price";
+                price.textContent = plot.price;
+
+                const btn = document.createElement("a");
+                btn.href = `plot-details.html?id=${storedPlots.indexOf(plot)}`;
+                btn.className = "btn btn-primary";
+                btn.textContent = "View Details";
+
+
+                body.appendChild(title);
+                body.appendChild(location);
+                body.appendChild(size);
+                body.appendChild(price);
+                body.appendChild(btn);
+
+                card.appendChild(img);
+                card.appendChild(body);
+                col.appendChild(card);
+                container.appendChild(col);
+            });
+        }
+
+        window.onload = loadPlots;
+    </script>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-0 shadow rounded-4 p-4 text-center bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold text-primary mb-3">📍 Schedule a Site Visit</h5>
+                        <p class="card-text fs-6 text-muted">
+                            Interested in this plot? Contact our admin for more information, pricing, and to book your
+                            site visit.
+                        </p>
+
+                        <div class="my-3">
+                            <a href="tel:+916381038391" class="btn btn-primary btn-lg w-100 rounded-pill">
+                                📞 Call Now: +91 63810 38391
+                            </a>
+                        </div>
+
+                        <div class="text-muted small">
+                            🕐 Available: 9:00 AM – 6:00 PM (Mon–Sat) <br>
+                            🚀 Quick responses assured during working hours.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/916381038391" target="_blank" style="
+               position: fixed;
+               bottom: 80px;
+               right: 15px;
+               z-index: 1000;
+               background-color: #25D366;
+               color: white;
+               border-radius: 50%;
+               width: 55px;
+               height: 55px;
+               text-align: center;
+               font-size: 28px;
+               line-height: 55px;
+               box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+               text-decoration: none;
+               animation: bounce 2s infinite;">
+        <i class="fa fa-whatsapp"></i>
+    </a>
+
+    <button class="emi-toggle-btn" onclick="toggleEMI()">💰</button>
+
+    <div class="emi-popup" id="emiCalculator">
+        <h4>EMI Calculator</h4>
+        <input type="number" id="principal" placeholder="Loan Amount (₹)" />
+        <input type="number" id="rate" placeholder="Interest Rate (%)" />
+        <input type="number" id="months" placeholder="Tenure (Months)" />
+        <button onclick="calculateEMI()">Calculate EMI</button>
+        <div class="emi-result" id="emiResult"></div>
+    </div>
+
+    <script>
+        function toggleEMI() {
+            const popup = document.getElementById("emiCalculator");
+            popup.style.display = popup.style.display === "flex" ? "none" : "flex";
+        }
+
+        function calculateEMI() {
+            const principalInput = document.getElementById("principal").value.trim();
+            const rateInput = document.getElementById("rate").value.trim();
+            const monthsInput = document.getElementById("months").value.trim();
+            const resultBox = document.getElementById("emiResult");
+
+            const P = parseFloat(principalInput);
+            const annualRate = parseFloat(rateInput);
+            const N = parseInt(monthsInput);
+
+            // Validate input
+            if (isNaN(P) || isNaN(annualRate) || isNaN(N) || P <= 0 || annualRate <= 0 || N <= 0) {
+                resultBox.innerHTML = `<p style="color: red;">❗ Please enter valid positive numbers in all fields.</p>`;
+                return;
+            }
+
+            const R = annualRate / 12 / 100;
+
+            const EMI = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+            const totalPayment = EMI * N;
+            const totalInterest = totalPayment - P;
+
+            resultBox.innerHTML = `
+              <p>📅 Monthly EMI: ₹${EMI.toFixed(2)}</p>
+              <p>💸 Total Interest: ₹${totalInterest.toFixed(2)}</p>
+              <p>💰 Total Payment: ₹${totalPayment.toFixed(2)}</p>
+            `;
+        }
+    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>PrimePlots</h3>
+                    <p>Your trusted partner in land acquisition. We help you find the perfect plot for your dreams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#hero">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="plots.html">Plots</a></li>
+                        <li><a href="index.html#why-choose-us">Why PrimePlots</a></li>
+                        <li><a href="index.html#contact-section">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Plot Types</h3>
+                    <ul>
+                        <li><a href="#">Residential Plots</a></li>
+                        <li><a href="#">Commercial Plots</a></li>
+                        <li><a href="#">Agricultural Land</a></li>
+                        <li><a href="#">Industrial Plots</a></li>
+                        <li><a href="#">Waterfront Properties</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Plot Street, Land City, Ambur</li>
+                        <li><i class="fas fa-phone"></i>+91 63810 38391</li>
+                        <li><i class="fas fa-envelope"></i> info@primeplots.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 PrimePlots. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+    <!-- Sky Blue Scrolling Offer Banner -->
+    <div class="top-marquee">
+        <marquee behavior="scroll" direction="left" scrollamount="6">
+            🎁 <strong>Get Free Layout Plan on WhatsApp!</strong> 📲 | 💸 <strong>₹10,000 Discount for Bookings This
+                Week!</strong> Hurry up!
+        </marquee>
+    </div>
+
+    <style>
+        .top-marquee {
+            background-color: #87ceeb;
+            /* Sky Blue */
+            color: #003366;
+            font-weight: bold;
+            padding: 10px 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            font-size: 16px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        body {
+            margin-top: 50px;
+            /* prevent content overlap */
+        }
+
+        marquee strong {
+            color: #002244;
+        }
+    </style>
+
+</body>
+
+</html>
